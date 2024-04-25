@@ -2,7 +2,7 @@ use bevy::{prelude::*, window::WindowResolution};
 
 #[cfg(feature = "debug")]
 use bevy_inspector_egui::quick::WorldInspectorPlugin;
-use board_plugin::BoardPlugin;
+use board_plugin::{resources::board_options::BoardOptions, BoardPlugin};
 
 fn camera_setup(mut commands: Commands) {
     commands.spawn(Camera2dBundle::default());
@@ -21,6 +21,13 @@ fn main() {
         close_when_requested: true,
     }));
 
+    app.insert_resource(BoardOptions {
+        map_size: (20, 20),
+        bomb_count: 40,
+        tile_padding: 3.0,
+        tile_size: board_plugin::resources::board_options::TileSize::Fixed(20.0),
+        ..Default::default()
+    });
     app.add_plugins(BoardPlugin);
 
     #[cfg(feature = "debug")]
