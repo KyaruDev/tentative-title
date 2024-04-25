@@ -7,10 +7,10 @@ opt-level = 3
 [workspace]
 resolver = "2"
 members = [
-    "board-plugin",
-    "tentative-title"
+    "board_plugin",
+    "tentative_title"
 ]
 
 [workspace.dependencies]
 bevy = { version = "0.13.2", features = ["wayland"] }
-board-plugin = { path = "board-plugin" }
+board-plugin = { path = "board_plugin" }
